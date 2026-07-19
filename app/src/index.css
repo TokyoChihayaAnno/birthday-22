@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-foreground;
+    background: #050514;
+    overflow-x: hidden;
+  }
+}
+
+/* ---------- 自定义动画 ---------- */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 18px rgba(255, 182, 213, 0.55), 0 0 60px rgba(167, 139, 250, 0.35); }
+  50% { text-shadow: 0 0 32px rgba(255, 182, 213, 0.9), 0 0 110px rgba(167, 139, 250, 0.65); }
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+  25% { transform: scale(1.08) rotate(2deg); opacity: 0.85; }
+  50% { transform: scale(0.94) rotate(-3deg); opacity: 1; }
+  75% { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
+}
+
+@keyframes smokeUp {
+  0% { opacity: 0.7; transform: translateY(0) scale(0.6); }
+  100% { opacity: 0; transform: translateY(-46px) scale(1.6); }
+}
+
+@keyframes heartFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translateY(-110vh) rotate(28deg); opacity: 0; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shootingStar {
+  0% { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 1; }
+  100% { transform: translateX(-520px) translateY(300px) rotate(-35deg); opacity: 0; }
+}
+
+@keyframes moonGlow {
+  0%, 100% { box-shadow: 0 0 60px 18px rgba(255, 240, 200, 0.22); }
+  50% { box-shadow: 0 0 90px 30px rgba(255, 240, 200, 0.34); }
+}
+
+@keyframes balloonSway {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-26px) rotate(4deg); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.anim-rise { animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-float { animation: floatY 5s ease-in-out infinite; }
+.anim-glow { animation: glowPulse 3.2s ease-in-out infinite; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flame {
+  animation: flicker 0.28s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+.smoke {
+  animation: smokeUp 1.6s ease-out forwards;
+}
+
+.title-gradient {
+  background: linear-gradient(120deg, #ffd6ec, #c4b5fd, #8ec5ff, #ffd6ec);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 8s ease infinite;
+}
+
+.moon {
+  animation: moonGlow 6s ease-in-out infinite;
+}
